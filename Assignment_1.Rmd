@@ -90,7 +90,45 @@ print.data.frame(DEA_mean)
 
 
 
+5. For the first month of the year present a table that summarizes the average price and average weight of seized cocaine per state in order of decreasing average price ?
 
+Here we get start by filtering Januaray seizures.
+Then we get group by states so we are able to summarise and get the average price and weights.
+Next we must add the month variable to this dataset.
+By filtering the first month and filtering out duplicates we get a data set
+which we select to keep only state and month.
+This dataset is then joined by the dataset with averages by state.
+The last piece of the pipeline arranges the average price in descending order. 
+```{r , echo = T}
+
+DEA_jan <- DEA%>%
+  filter(month == 1) %>%
+  group_by(state) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE), 
+            avg_weight = mean(weight, na.rm = TRUE))
+
+
+
+
+statemonth <- DEA%>%
+  filter(month == 1) 
+
+statemonth_ <- statemonth%>% filter (! duplicated(state))%>%
+  select(state, month)%>%
+  left_join(DEA_jan)%>%
+  arrange(desc(avg_price)) 
+
+
+
+```
+
+
+
+Answer:
+```{r , echo = F}
+print.data.frame(statemonth_)
+
+```
 
 
 

@@ -63,6 +63,27 @@ DEA_mean <- summarise(bymonth, avg_price = mean(price))%>%
             arrange(desc(avg_price))%>%
             select(month, avg_price)
 
-  
-  
 
+
+##Q5
+
+DEA_jan <- DEA%>%
+  filter(month == 1) %>%
+  group_by(state) %>%
+  summarise(avg_price = mean(price, na.rm = TRUE), 
+            avg_weight = mean(weight, na.rm = TRUE))
+
+
+
+
+statemonth <- DEA%>%
+  filter(month == 1) 
+
+statemonth_ <- statemonth%>% filter (! duplicated(state))%>%
+  select(state, month)%>%
+  left_join(DEA_jan)%>%
+  arrange(desc(avg_price)) 
+
+
+
+  
