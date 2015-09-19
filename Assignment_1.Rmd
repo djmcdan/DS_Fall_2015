@@ -6,16 +6,36 @@ output: word_document
 ---
 ```{r, echo=FALSE, message=F, warning=F}
 
-source("VL_check_RKK_BTH_NW_091515_combined.R")
+source("Assignment_1_R.R")
 ```
 
-List of Patients with VL1 but no date entered.  
-```{r, echo=FALSE}
-  print(missingVL1Date) 
+
+1. In what state and in what month was the highest valued cocaine seized ?
+
+
+To answer this question I first wanted to know some things about the data. First I wanted to make sure the state variables where the same so I could combine the two data sets. Once this was done I used cbind to merge the two. 
+
+Using the dplyr package I used several pipelines to answer the above question. 
+
+I started of by using mutate to find the highest valued cocaine.
+Then used filter to find the price that matched the highest price.
+I used select to keep only nessesary variables.
+
+```{r , echo = T}
+DEA_smh <- DEA%>%
+  mutate(highestPrice = max(price))%>%
+  filter(highestPrice == price)%>%
+  select(state, potency, weight, price, month)
 ```
-  
-  
-List of Patients with no VL1 entered but have date entered.    
-```{r, echo=FALSE}
-  print(missingVL1)
+Answer:
+```{r , echo = F}
+print(DEA_smh)
+
 ```
+
+
+2. What state had the one seizure with the highest / maximum potency ?
+
+
+
+ 
