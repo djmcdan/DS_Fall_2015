@@ -53,3 +53,16 @@ byState <- group_by(DEA,state)
 
 #print.data.frame(StateSeiz)
 
+
+##Q4
+
+bymonth <- group_by(DEA,month) 
+
+
+DEA_mean <- summarise(bymonth, avg_price = mean(price))%>%
+            arrange(desc(avg_price))%>%
+            select(month, avg_price)
+
+  
+  
+

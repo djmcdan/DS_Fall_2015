@@ -73,4 +73,24 @@ print.data.frame(StateSeiz)
 ```
 
 
- 
+
+4. Present a table that summarizes the average price of seized cocaine per month in order of decreasing average price ?  
+
+Here we summarise the average price by month then arrange in descending order.
+```{r , echo = T}
+DEA_mean <- summarise(bymonth, mean = mean(price))%>%
+            arrange(desc(mean))
+```
+
+Answer:
+```{r , echo = F}
+print.data.frame(DEA_mean)
+
+```
+
+
+
+
+
+
+
