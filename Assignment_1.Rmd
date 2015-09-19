@@ -1,0 +1,21 @@
+---
+title: "Assignment_1"
+author: "Darius McDaniel"
+date: "September 19, 2015"
+output: word_document
+---
+```{r, echo=FALSE, message=F, warning=F}
+
+source("VL_check_RKK_BTH_NW_091515_combined.R")
+```
+
+List of Patients with VL1 but no date entered.  
+```{r, echo=FALSE}
+  print(missingVL1Date) 
+```
+  
+  
+List of Patients with no VL1 entered but have date entered.    
+```{r, echo=FALSE}
+  print(missingVL1)
+```
