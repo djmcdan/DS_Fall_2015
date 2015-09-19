@@ -37,5 +37,38 @@ print(DEA_smh)
 2. What state had the one seizure with the highest / maximum potency ?
 
 
+To answer this question for I used the some of the same methods as in question 1.
+But added in arrange decsending by potency and found two states with the same high potency. I then wanted to look at the counts of seizures to see which state had just one seizure and both ME and VA had a count of 1. 
+
+```{r , echo = T}
+DEA_pote <- DEA%>%
+  mutate(potencyMax = max(potency))%>%
+   filter(potencyMax == potency)%>%
+  inner_join(count)%>%
+  select(state, potencyMax,count)
+
+```
+Answer:
+```{r , echo = F}
+print(DEA_pote)
+
+```
+
+3. Present a table which counts the total number of seizures per state. The table should be arranged in
+order of number of seizures from highest to lowest.
+
+Here we add the count by state within summarise then arrange in descending order.
+```{r , echo = T}
+StateSeiz <- summarise(byState, count = n())%>%
+             arrange(desc(count))
+
+```
+
+Answer:
+```{r , echo = F}
+print(StateSeiz)
+
+```
+
 
  

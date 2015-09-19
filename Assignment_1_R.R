@@ -26,5 +26,29 @@ DEA <- DEA_[c("state", "potency", "weight", "price", "month")]
 ##Q2
 
 
+byState_po <- group_by(DEA,state,potency)
+
+
+
+count <- summarise(byState_po, count = n())
+states1cnt <- filter(count, count ==1 )
+
+
+
+#DEA_pote <- DEA%>%
+ # arrange(desc(potency))%>%
+#  mutate(potencyMax = max(potency))%>%
+ #  filter(potencyMax == potency)%>%
+#  inner_join(count)%>%
+ # select(state, potencyMax)
+
+
+
+##Q3
+
+byState <- group_by(DEA,state)
+
+StateSeiz <- summarise(byState, count = n())%>%
+             arrange(desc(count))
 
 
