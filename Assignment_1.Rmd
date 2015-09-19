@@ -9,6 +9,8 @@ output: word_document
 source("Assignment_1_R.R")
 ```
 
+This file is sourced to a R program called "Assignment_1_R.R" which is were the data is cleaned and code is tested.
+
 
 1. In what state and in what month was the highest valued cocaine seized ?
 
@@ -66,7 +68,7 @@ StateSeiz <- summarise(byState, count = n())%>%
 
 Answer:
 ```{r , echo = F}
-print(StateSeiz)
+print.data.frame(StateSeiz)
 
 ```
 

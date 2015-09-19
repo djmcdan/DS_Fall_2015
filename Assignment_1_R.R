@@ -48,7 +48,8 @@ states1cnt <- filter(count, count ==1 )
 
 byState <- group_by(DEA,state)
 
-StateSeiz <- summarise(byState, count = n())%>%
-             arrange(desc(count))
+#StateSeiz <- summarise(byState, count = n())%>%
+ #            arrange(desc(count))
 
+#print.data.frame(StateSeiz)
 
